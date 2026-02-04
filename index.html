@@ -36,7 +36,7 @@
   #yes { background: #ff4d6d; color: white; }
   #no { background: white; color: #ff4d6d; }
 
-  /* Final message hidden at first */
+  /* Final section hidden at first */
   #final {
     display: none;
     flex-direction: column;
@@ -51,26 +51,24 @@
     transition: opacity 2s ease-in-out;
   }
 
-  #final video {
+  #final img {
     max-width: 80%;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    margin-top: 20px;
   }
 </style>
 </head>
 <body>
 
-<h1>Hi Kitty will you be by Valentine? 🐱</h1>
+<h1>Hi Kitty will you be my Valentine? 🐱</h1>
 <button id="yes">Yes 💘</button>
 <button id="no">No 😟</button>
 
-<!-- Final section -->
+<!-- Final section with GIF -->
 <div id="final">
-  <h1 id="yay">YAYYY!! 💕 A day spent with you is worth all the time in the world!! <3</h1>
-  <video controls autoplay>
-    <source src="yourvideo.mov" type="video/quicktime">
-    Your browser does not support the video tag.
-  </video>
+  <h1 id="yay">YAYYY!! 💕 A day spent with you is worth all my days combined! <3</h1>
+  <img src="cat.gif" alt="Spinning cat">
 </div>
 
 <!-- Confetti library -->
@@ -85,7 +83,7 @@ document.getElementById("no").onclick = function() {
   if(noCount === 1){
     alert("Are you sure? 🫩");
   } else if(noCount === 2){
-    alert("Think carefully… free food n flowers! 💐");
+    alert("Think carefully… free food n flowers 💐");
   } else if(noCount === 3){
     alert("Last chance… don’t break my heart..hehe jk");
   } else {
