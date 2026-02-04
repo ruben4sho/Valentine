@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+<style>
+body{
+  text-align:center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+h1{font-size:3em;color:white;}
+button{
+  padding:15px 30px;
+  font-size:1.2em;
+  margin:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+#yes{background:#ff4d6d;color:white;}
+#no{background:white;color:#ff4d6d;}
+</style>
+</head>
+<body>
+
+<h1>Will you be my Valentine? 💖</h1>
+<button id="yes">Yes 💘</button>
+<button id="no">No 😢</button>
+
+<script>
+let noCount = 0;
+
+document.getElementById("no").onclick = function() {
+  noCount++;
+  if(noCount === 1){
+    alert("Are you sure? 🥺");
+  } else if(noCount === 2){
+    alert("Think carefully… I have snacks and cuddles! 🍫🤗");
+  } else if(noCount === 3){
+    alert("Last chance… don’t break my heart 💔");
+  } else {
+    alert("Okay okay… but I’m changing that to YES 😌💖");
+    document.getElementById("yes").click();
+  }
+};
+
+document.getElementById("yes").onclick = function() {
+  document.body.innerHTML = "<h1>YAYYY!! 💕 You just made me the happiest person alive!! 💍🥰</h1>";
+};
+</script>
+
+</body>
+</html>
