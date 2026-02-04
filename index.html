@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Be My Valentine ❤️</title>
+<title>For you from rue</title>
 <style>
   body {
     text-align: center;
@@ -41,6 +41,8 @@
     display: none;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    width: 100%;
   }
 
   #final h1 {
@@ -57,18 +59,63 @@
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
     margin-top: 20px;
   }
+
+  /* Heart-shaped balloons */
+  #balloons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+  }
+
+  .heart {
+    position: absolute;
+    bottom: -50px;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: floatUp 5s linear forwards;
+    z-index: 10;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -15px;
+    left: 0;
+  }
+
+  .heart::after {
+    top: 0;
+    left: 15px;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-600px) rotate(-45deg); opacity: 0; }
+  }
 </style>
 </head>
 <body>
 
-<h1>Hi Kitty will you be my Valentine? 🐱</h1>
+<h1>Hi kitty will you be my Valentine? 🐱</h1>
 <button id="yes">Yes 💘</button>
 <button id="no">No 😟</button>
 
-<!-- Final section with GIF -->
+<!-- Final section with GIF and balloons -->
 <div id="final">
-  <h1 id="yay">YAYYY!! 💕 A day spent with you is worth all my days combined! <3</h1>
+  <h1 id="yay">YAYYY!! 💕 A day spent with you is worth all my days combined! ❤️</h1>
   <img src="cat.gif" alt="Spinning cat">
+  <div id="balloons"></div>
 </div>
 
 <!-- Confetti library -->
@@ -83,7 +130,7 @@ document.getElementById("no").onclick = function() {
   if(noCount === 1){
     alert("Are you sure? 🫩");
   } else if(noCount === 2){
-    alert("Think carefully… free food n flowers 💐");
+    alert("Think carefully… free food n flowers! 💐");
   } else if(noCount === 3){
     alert("Last chance… don’t break my heart..hehe jk");
   } else {
@@ -128,6 +175,24 @@ document.getElementById("yes").onclick = function() {
       colors: ['#ff4d6d','#ffb6c1','#ffe3e3','#ffffff']
     });
   }, 200);
+
+  // Spawn heart balloons
+  function spawnBalloons() {
+    const balloonCount = 10; // number of balloons
+    const container = document.getElementById("balloons");
+    for(let i = 0; i < balloonCount; i++){
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 80 + "%"; // random horizontal position
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s"; // random float speed
+      container.appendChild(heart);
+
+      // Remove balloon after animation
+      setTimeout(() => heart.remove(), 7000);
+    }
+  }
+
+  spawnBalloons();
 };
 </script>
 
